@@ -1,0 +1,6 @@
+BackEnd/node_modules
+BackEnd/package-lock.json
+BackEnd/.env
+
+FrontEnd/capstone-project/node_modules
+FrontEnd/capstone-project/package-lock.json
