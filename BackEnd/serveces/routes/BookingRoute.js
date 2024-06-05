@@ -1,6 +1,6 @@
 import { Router } from "express";
 import Booking from "../models/BookingModel.js";
-import User from "../models/UserModel.js";
+import { authMiddleware } from "../authentication/auth.js";
 import Service from "../models/ServicesModel.js";
 
 export const bookingRoute = Router();
@@ -36,20 +36,29 @@ bookingRoute.delete("/:id", async (req, res, next) => {
 });
 
 //Aggiunta nuova prenotazione
-bookingRoute.post("/newBooking/:id", async (req, res, next) => {
+bookingRoute.post("/newBooking/:id", authMiddleware, async (req, res, next) => {
     try {
-        let user = await User.findById(req.params.id);
+        //Controllo che req.user sia preso da authMiddleware
+        if (!req.user || !req.user._id) {
+            return res.status(401).send({ error: "Utente non autenticato" });
+        }
 
+        // Trova il servizio tramite ID
         let service = await Service.findById(req.params.id);
+        //console.log(req.params.id);
+        if (!service) {
+            return res.status(404).send({ error: "Servizio non trovato" });
+        }
 
-        let newBooking = await Booking.create({...req.body, userName: user, serviceName: service._id});
+        // Creanuova prenotazione
+        let newBooking = await Booking.create({
+            ...req.body,
+            user: req.user._id,
+            service: service._id
+        });
 
-        user.booking.push(newBooking._id);
-
-        await user.save();
-        
-        res.send(newBooking).status(400);
-    } catch (error) {
-        next(error);
+        res.status(201).send(newBooking);
+    } catch(err) {
+        next(err);
     }
 });

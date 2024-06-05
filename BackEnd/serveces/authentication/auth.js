@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import User from "../models/UserModel";
+import User from "../models/UserModel.js";
 import { config } from "dotenv";
 
 config();
@@ -11,7 +11,7 @@ export const generateJWT = (payload) => {
         jwt.sign(
             payload,
             process.env.JWT_SECRET,
-            {expiresIn: '1d'},
+            {expiresIn: "1d"},
             (err, token) => { //Callback che controlla se c'è errore o se c'è token
 
                 if (err) {
@@ -48,11 +48,11 @@ export const verifyJWT = (token) => {
 export const authMiddleware = async(req, res, next) => {
     try {
         if(!req.headers.authorization) { //Se il token non è presente nell'header
-            res.status(400).send('Effettua il login');
+            res.status(400).send("Effettua il login");
         } else {
             //Il token è stato fornito, verifichiamo se è valido e togliamo stringa 'Bearer '
             const decoded = await verifyJWT(
-                req.headers.authorization.replace('Bearer ', '')
+                req.headers.authorization.replace("Bearer ", "")
             );
             //Verifichiamo che il token esista con exp
             if (decoded.exp) {
@@ -66,14 +66,14 @@ export const authMiddleware = async(req, res, next) => {
                     req.user = me;
                     next();
                 } else {
-                    res.status(401).send('Utente non trovato');
+                    res.status(401).send("Utente non trovato");
                 }
             } else {
-                res.status(401).send('Rieffettua il login'); //Token non valido o scaduto
+                res.status(401).send("Rieffettua il login"); //Token non valido o scaduto
             }
         }
 
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 };

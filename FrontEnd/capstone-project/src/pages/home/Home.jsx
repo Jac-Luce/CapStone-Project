@@ -8,7 +8,7 @@ import { Container } from 'react-bootstrap';
 
 export default function Home() {
   return (
-    <Container fluid>
+    <Container fluid className='mt-5 pt-5'>
         <JumbWelcome />
         <Presentation />
         <Container className='d-flex'>

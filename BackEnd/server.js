@@ -28,6 +28,7 @@ app.use(express.json());
 
 //Middleware che comunica le richieste http effettuate
 app.use(requestMiddlew);
+//app.use(authMiddleware);
 
 //Importo Routes
 app.use("/", authRoute);

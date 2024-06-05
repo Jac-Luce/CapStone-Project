@@ -16,7 +16,7 @@ authRoute.post('/signIn', async(req, res, next) => {
             ...req.body,
             password: await bcrypt.hash(req.body.password, 10)
         });
-        res.send(user).status(400);
+        res.send(user);
     } catch (error) {
         next(error);
     }
@@ -35,14 +35,14 @@ authRoute.post('/login', async(req, res, next) => {
             if(passwordIsOk) {
                 //Genera token
                 const token = await generateJWT({
-                    id: userFound._id
+                    _id: userFound._id
                 });
                 res.send({user: userFound, token: token});
             } else {
-                res.status(400).send('Password errata');
+                res.status(400).send("Password errata");
             }
         } else {
-            res.status(400).send('Utente non trovato');
+            res.status(400).send("Utente non trovato");
         }
     } catch (error) {
         next(error);

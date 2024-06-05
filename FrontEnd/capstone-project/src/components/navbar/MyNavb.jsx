@@ -4,13 +4,14 @@ import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { GiPadlock } from "react-icons/gi";
 import { FaRegUserCircle } from "react-icons/fa";
+import logo from "../../asset/logo.png";
 
 export default function MyNavb() {
   return (
     <Navbar expand="lg" className="navbarHome" fixed="top">
         <Container className='justify-content-between'>
             <Navbar.Brand as={Link} to="/">
-                <img className='logoNavbar' alt='logo' src='' />
+                <img className='logoNavbar' alt='logoimage' src={logo} />
             </Navbar.Brand>
             <Nav className='me-auto'>
                 <Nav.Link as={Link} to='/'>Home</Nav.Link>
@@ -20,8 +21,8 @@ export default function MyNavb() {
                 <Nav.Link as={Link} to='/booking'>Prenotazioni</Nav.Link>
                 <Nav.Link as={Link} to='/newBooking'>Nuova prenotazione</Nav.Link>
             </Nav>
-            <Button> <GiPadlock /> </Button>
-            <Button className='ms-1'> <FaRegUserCircle /> </Button>
+            <Button variant='outline-primary' className='rounded-circle'> <GiPadlock /> </Button>
+            <Button variant='outline-primary' className='ms-1 rounded-circle' as={Link} to='/profile'> <FaRegUserCircle /> </Button>
         </Container>
     </Navbar>
   )

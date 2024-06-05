@@ -1,22 +1,24 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext }from '../../contextProvider/AuthContextProvider.jsx';
+import Logout from './Logout.jsx';
+import BookingTabs from '../booking-item/BookingTabs.jsx';
 
 export default function Profile() {
-    const {_id} = useParams();
+    const {token} = useContext(AuthContext);
 
     const [data, setData] = useState({});
 
     const userProfile = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/${_id}`, {
+            const response = await fetch('http://localhost:3001/profile', {
                 method:'GET',
-                headers: {'Content-Type': 'application/json'}
+                headers: {'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}
             });
             if (response.ok) {
                 const result = await response.json();
-                console.log(result);
+                //console.log(result);
                 setData(result);
             }
         } catch (error) {
@@ -29,15 +31,20 @@ export default function Profile() {
     }, []);
 
   return (
-    <Container>
+    <Container className='mt-5 pt-5'>
         <Row className='justify-content-md-center'>
-            <Col md='6'>
+            <Col md='4' xs='6'>
                 <Card>
                     <Card.Body>
                         <Card.Title>{data.name} {data.lastName}</Card.Title>
+                        <p>Ciao</p>
                         <Card.Text>{data.email}</Card.Text>
                     </Card.Body>
                 </Card>
+                <Logout />
+            </Col>
+            <Col md='8' xs='12'>
+                <BookingTabs />
             </Col>
         </Row>
     </Container>

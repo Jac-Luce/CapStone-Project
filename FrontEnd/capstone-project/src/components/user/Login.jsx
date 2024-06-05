@@ -2,23 +2,22 @@ import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../../contextProvider/AuthContextProvider.jsx';
+import {AuthContext} from '../../contextProvider/AuthContextProvider.jsx';
 
 export default function Login() {
-
-    const {token, setToken} = useContext(AuthContext);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
-    const myBody = {'email': email.toString(), 'password': password.toString()};
+    const {token, setToken} = useContext(AuthContext);
 
     const userLogin = async(e) => {
         e.preventDefault();
+        const myBody = {'email': email.toString(), 'password': password.toString()};
 
-        try {
+        try { 
             const response = await fetch('http://localhost:3001/login', {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
@@ -27,17 +26,18 @@ export default function Login() {
 
             if (response.ok) {
                 const result = await response.json();
-                localStorage.setItem('token', result.token);
+                localStorage.setItem("token", result.token);
                 setToken(result.token);
             }
-        } catch (error) {
+       } catch (error) {
             console.error(error);
         }
     };
 
-    useEffect(() => {
-        if(token !== "") {
-            navigate('/profile')
+   useEffect(() => {
+        if(token) {
+           // console.log(token);
+            navigate('/profile');
         }
     }, [token]);
 
@@ -45,7 +45,7 @@ export default function Login() {
     <Container fluid='sm'>
         <Row className='justify-content-md-center'>
             <Col>
-                <Form>
+                <Form onSubmit={userLogin}>
                     <Form.Group>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
@@ -57,8 +57,16 @@ export default function Login() {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type='password'
+                            placeholder='Inserisci password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </Form.Group>
+                    <Button type='submit'>Accedi</Button>
                 </Form>
+                <Link to='/signIn'>Non sei ancora registrato? Registrati</Link>
             </Col>
         </Row>
     </Container>

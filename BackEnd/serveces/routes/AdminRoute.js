@@ -60,7 +60,7 @@ adminRoute.delete("/:id", async(req, res, next) => {
         next(error);
     }
 });
-
+/*
 //Aggiunta nuovo user
 adminRoute.post("/register", async(req, res, next) => {
     try {
@@ -69,4 +69,4 @@ adminRoute.post("/register", async(req, res, next) => {
     } catch (error) {
         next(error);
     }
-});
+}); */

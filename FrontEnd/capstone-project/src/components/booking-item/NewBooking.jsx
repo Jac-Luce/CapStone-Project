@@ -1,12 +1,13 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './style.css';
+import { AuthContext } from '../../contextProvider/AuthContextProvider.jsx';
 
 export default function NewBooking() {
-    //const [userName, setUserName] = useState("");
-    //const [serviceName, setServiceName] = useState("");
     const [date, setDate] = useState("");
+    const {token} = useContext(AuthContext);
+    const [selectedService, setSelectedService] = useState("");
 
     //Stato lista servizi
     const [servicesList, setServicesList] = useState([]);
@@ -34,14 +35,18 @@ export default function NewBooking() {
     //Creo nuova prenotazione
     const addBooking = async (e) => {
         e.preventDefault();
-        const myBody = {/*'userName': userName, 'serviceName': serviceName,*/ 'date': date};
+        const myBody = {'date': date};
 
         try {
-            const response = await fetch('http://localhost:3001/booking/newBooking', {
+            const response = await fetch(`http://localhost:3001/booking/newBooking/${selectedService}`, {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'},
                 body: JSON.stringify(myBody)
             });
+
+            if(response.ok) {
+                const result = await response.json();
+            }
 
         } catch (error) {
             console.error(error);
@@ -51,26 +56,19 @@ export default function NewBooking() {
   return (
     <>
         <Form className='booking-form'>
-        { /* <Form.Group>
-               <Form.Control 
-                    autoFocus
-                    type='text'
-                    placeholder='username'
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                /> 
-            </Form.Group>*/}
             <Form.Group>
-                <Form.Select>
+                <Form.Select 
+                    value={selectedService}
+                    onChange={(e) => setSelectedService(e.target.value)}
+                >
                     <option>Scegli il servizio</option>
                     {servicesList.map((service) => (
-                        <option value={service._id}/*value={serviceName} onChange={setServiceName(service._id)}*/>{service.name} {service.price}</option>
+                        <option key={service._id} value={service._id}>{service.name} {service.price}</option>
                     ))}
                 </Form.Select>
             </Form.Group>
             <Form.Group>
                 <Form.Control 
-                    
                     type='date'
                     placeholder='inserisci data'
                     value={date}
