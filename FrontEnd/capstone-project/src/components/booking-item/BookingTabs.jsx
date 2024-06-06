@@ -2,8 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import NewBooking from './NewBooking.jsx';
+import MyBooking from './MyBooking.jsx';
 
-export default function BookingTabs() {
+export default function BookingTabs({userId}) {
 
     const [selected, setSelected] = useState("booking");
 
@@ -18,7 +19,7 @@ export default function BookingTabs() {
         <NewBooking />
       </Tab>
       <Tab eventKey="bookingList" title="Le tue prenotazioni">
-        Tab content for Profile
+        <MyBooking userId={userId}/>
       </Tab>
     </Tabs>
   )

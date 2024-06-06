@@ -1,11 +1,15 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Tab, Tabs } from 'react-bootstrap';
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext }from '../../contextProvider/AuthContextProvider.jsx';
 import Logout from './Logout.jsx';
-import BookingTabs from '../booking-item/BookingTabs.jsx';
+import MyBooking from '../booking-item/MyBooking.jsx';
+import NewBooking from '../booking-item/NewBooking.jsx';
 
 export default function Profile() {
+    //Stato delle Tabs
+    const [selected, setSelected] = useState("booking");
+
     const {token} = useContext(AuthContext);
 
     const [data, setData] = useState({});
@@ -42,9 +46,22 @@ export default function Profile() {
                     </Card.Body>
                 </Card>
                 <Logout />
+                
             </Col>
             <Col md='8' xs='12'>
-                <BookingTabs />
+            <Tabs
+                id="controlled-tab-example"
+                activeKey={selected}
+                onSelect={(e) => setSelected(e)}
+                className="mb-3"
+            >
+                <Tab eventKey="booking" title="Effettua una prenotazione">
+                    <NewBooking />
+                </Tab>
+                <Tab eventKey="bookingList" title="Le tue prenotazioni">
+                    <MyBooking userId={data._id}/>
+                </Tab>
+            </Tabs>
             </Col>
         </Row>
     </Container>

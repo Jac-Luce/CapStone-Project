@@ -31,7 +31,7 @@ export default function ServicesList() {
 
   return (
     <Container fluid='sm'>
-    <Row className='justify-content-center-md-center'>
+    <Row className='justify-content-md-center'>
         <Col md='8'>
             <NewService serviceList={servicesList}/>
             <ListGroup variant='flush'>

@@ -1,6 +1,8 @@
 import { Router } from "express";
 import User from "../models/UserModel.js";
 import Booking from "../models/BookingModel.js";
+import { authMiddleware } from "../authentication/auth.js";
+import Service from "../models/ServicesModel.js";
 
 export const adminRoute = Router();
 
@@ -27,15 +29,22 @@ adminRoute.get("/:id", async (req, res, next) => {
 });
 
 //Ricevo tutte le prenotazioni di uno specifico user
-adminRoute.get("/:id/booking", async (req, res, next) => {
+adminRoute.get("/:id/myBooking", authMiddleware, async (req, res, next) => {
     try {
-        let user = await Booking.find({
-            user: req.params._id
+        //let service = await Service.findById(req.params.id);
+        //let user = await User.findById(req.params.id);
+        let bookings = await Booking.find({
+            user: req.user._id,
+            //service: service.name
         }).populate({
             path: "user",
             select: ["name", "lastName", "email"]
-        });
-        res.send(user);
+        })/*.populate({
+            path:"service",
+            select: ["name", "description", "price"]
+        })*/;
+        res.send(bookings);
+        //res.json(user);
     } catch (error) {
         next(error);
     }

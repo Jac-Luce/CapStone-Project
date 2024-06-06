@@ -7,6 +7,7 @@ import { AuthContext } from '../../contextProvider/AuthContextProvider.jsx';
 export default function NewBooking() {
     const [date, setDate] = useState("");
     const {token} = useContext(AuthContext);
+    //Stato che tiene traccia del servizio selezionato
     const [selectedService, setSelectedService] = useState("");
 
     //Stato lista servizi
