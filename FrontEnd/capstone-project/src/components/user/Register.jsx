@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import MyNavb from '../navbar/MyNavb.jsx';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -32,6 +33,8 @@ export default function Register() {
     };
 
   return (
+    <>
+    <MyNavb />
     <Container fluid='sm'>
         
         <Row className='justify-content-md-center'>
@@ -80,5 +83,6 @@ export default function Register() {
             </Col>
         </Row>
     </Container>
+    </>
   )
 }

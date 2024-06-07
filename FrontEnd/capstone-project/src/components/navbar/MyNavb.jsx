@@ -15,13 +15,11 @@ export default function MyNavb() {
             </Navbar.Brand>
             <Nav className='me-auto'>
                 <Nav.Link as={Link} to='/'>Home</Nav.Link>
-                <Nav.Link href='#'/*as={Link} to='/chiSiamo'*/>Chi siamo</Nav.Link>
+                <Nav.Link as={Link} to='/chiSiamo'>Chi siamo</Nav.Link>
                 <Nav.Link as={Link} to='/services'>Servizi</Nav.Link>
-                <Nav.Link href='#'/*as={Link} to='/shop'*/>Prodotti</Nav.Link>
-                <Nav.Link as={Link} to='/booking'>Prenotazioni</Nav.Link>
-                <Nav.Link as={Link} to='/newBooking'>Nuova prenotazione</Nav.Link>
+                <Nav.Link as={Link} to='/booking'>Prenota qui</Nav.Link>
             </Nav>
-            <Button variant='outline-primary' className='rounded-circle'> <GiPadlock /> </Button>
+            <Button variant='outline-primary' className='rounded-circle' as={Link} to='/adminLogin'> <GiPadlock /> </Button>
             <Button variant='outline-primary' className='ms-1 rounded-circle' as={Link} to='/profile'> <FaRegUserCircle /> </Button>
         </Container>
     </Navbar>

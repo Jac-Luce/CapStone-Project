@@ -18,6 +18,6 @@ export default function Logout() {
         navigate("/login");
     }
   return (
-    <Button variant='danger' className='rounded-circle' onClick={handleLogout}> <MdLogout /> </Button>
+    <Button variant='danger' className='rounded-circle mx-4 px-1 py-0' onClick={handleLogout}> <MdLogout /> </Button>
   )
 }

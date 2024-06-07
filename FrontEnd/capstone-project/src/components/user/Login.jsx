@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 import {AuthContext} from '../../contextProvider/AuthContextProvider.jsx';
+import MyNavb from '../navbar/MyNavb.jsx';
 
 export default function Login() {
 
@@ -42,6 +43,8 @@ export default function Login() {
     }, [token]);
 
   return (
+    <>
+    <MyNavb />
     <Container fluid='sm'>
         <Row className='justify-content-md-center'>
             <Col>
@@ -70,5 +73,6 @@ export default function Login() {
             </Col>
         </Row>
     </Container>
+    </>
   )
 }

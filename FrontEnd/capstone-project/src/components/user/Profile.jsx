@@ -5,6 +5,7 @@ import { AuthContext }from '../../contextProvider/AuthContextProvider.jsx';
 import Logout from './Logout.jsx';
 import MyBooking from '../booking-item/MyBooking.jsx';
 import NewBooking from '../booking-item/NewBooking.jsx';
+import MyNavb from '../navbar/MyNavb.jsx';
 
 export default function Profile() {
     //Stato delle Tabs
@@ -35,35 +36,37 @@ export default function Profile() {
     }, []);
 
   return (
+    <>
+    <MyNavb />
     <Container className='mt-5 pt-5'>
         <Row className='justify-content-md-center'>
-            <Col md='4' xs='6'>
-                <Card>
+            <Col md='3' xs='6'>
+                <Card className='mt-5 border-white'>
                     <Card.Body>
-                        <Card.Title>{data.name} {data.lastName}</Card.Title>
-                        <p>Ciao</p>
+                        <Card.Title>Ciao {data.name}</Card.Title>
                         <Card.Text>{data.email}</Card.Text>
                     </Card.Body>
                 </Card>
                 <Logout />
                 
             </Col>
-            <Col md='8' xs='12'>
+            <Col md='9' xs='12'>
             <Tabs
                 id="controlled-tab-example"
                 activeKey={selected}
                 onSelect={(e) => setSelected(e)}
-                className="mb-3"
+                className="mb-3 mt-5"
             >
                 <Tab eventKey="booking" title="Effettua una prenotazione">
                     <NewBooking />
                 </Tab>
                 <Tab eventKey="bookingList" title="Le tue prenotazioni">
-                    <MyBooking userId={data._id}/>
+                    <MyBooking />
                 </Tab>
             </Tabs>
             </Col>
         </Row>
     </Container>
+    </>
   )
 }

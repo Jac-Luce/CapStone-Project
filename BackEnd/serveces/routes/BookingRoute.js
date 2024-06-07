@@ -8,7 +8,13 @@ export const bookingRoute = Router();
 //Ricevo lista delle prenotazioni
 bookingRoute.get("/list", async(req, res, next) => {
     try {
-        let bookingList = await Booking.find();
+        let bookingList = await Booking.find().populate({
+            path:"service",
+            select: ["name", "description"]
+        }).populate({
+            path: "user",
+            select: ["name", "lastName", "email"]
+        });
         res.send(bookingList);
     } catch (error) {
         next(error);

@@ -13,6 +13,10 @@ export default function Presentation() {
         </div>
       </div>
       <div className='mb-5'>
+        <p>La bellezza è una qualità dell'anima, risultato di delicati equilibri.</p>
+        <p>E' il frutto di intrecci tra elementi diversi che incontrandosi danno vita a qualcosa di unico e meraviglioso.</p>
+      </div>
+      <div className='mb-5'>
         <p className=''>Ambiente moderno, luminoso e all'avanguardia.</p>
         <p>Hair studio specializzato in colorazioni e personalizzazioni di Hairlook.</p>
         <p className='text-muted'>Marche e prodotti utilizzati: L'Oreal Professionel, Kerastase, Medavita.</p>

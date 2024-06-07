@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import './style.css';
+//import './style.css';
 import { AuthContext } from '../../contextProvider/AuthContextProvider.jsx';
 
 export default function NewBooking() {
     const [date, setDate] = useState("");
-    const {token} = useContext(AuthContext);
+    const {token, getMyBooking} = useContext(AuthContext);
     //Stato che tiene traccia del servizio selezionato
     const [selectedService, setSelectedService] = useState("");
 
@@ -47,6 +47,7 @@ export default function NewBooking() {
 
             if(response.ok) {
                 const result = await response.json();
+                getMyBooking();
             }
 
         } catch (error) {
@@ -56,7 +57,7 @@ export default function NewBooking() {
 
   return (
     <>
-        <Form className='booking-form'>
+        <Form className='pt-5'>
             <Form.Group>
                 <Form.Select 
                     value={selectedService}
@@ -68,7 +69,7 @@ export default function NewBooking() {
                     ))}
                 </Form.Select>
             </Form.Group>
-            <Form.Group>
+            <Form.Group className='my-4'>
                 <Form.Control 
                     type='date'
                     placeholder='inserisci data'
@@ -78,7 +79,7 @@ export default function NewBooking() {
             </Form.Group>
         </Form>
 
-        <Button type='submit' onClick={addBooking}>Prenota</Button>
+        <Button type='submit' className='rounded-pill' onClick={addBooking}>Prenota</Button>
     </>
   )
 }

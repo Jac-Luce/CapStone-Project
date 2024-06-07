@@ -2,7 +2,6 @@ import { Router } from "express";
 import User from "../models/UserModel.js";
 import Booking from "../models/BookingModel.js";
 import { authMiddleware } from "../authentication/auth.js";
-import Service from "../models/ServicesModel.js";
 
 export const adminRoute = Router();
 
@@ -18,33 +17,33 @@ adminRoute.get("/", async(req, res, next) => {
     }
 });
 
-//Ricevo specifico user tramite id
-adminRoute.get("/:id", async (req, res, next) => {
+//Ricevo tutte le prenotazioni di uno specifico user
+adminRoute.get("/myBooking", authMiddleware, async (req, res, next) => {
     try {
-        let user = await User.findById(req.params._id);
-        res.send(user);
+        
+        //console.log(req.user);
+
+        let bookings = await Booking.find({
+            user: req.user._id
+        }).populate({
+            path:"service",
+            select: ["name", "description", "price"]
+        }).populate({
+            path: "user",
+            select: ["name", "lastName", "email"]
+        });
+        res.send(bookings);
+        
     } catch (error) {
         next(error);
     }
 });
 
-//Ricevo tutte le prenotazioni di uno specifico user
-adminRoute.get("/:id/myBooking", authMiddleware, async (req, res, next) => {
+//Ricevo specifico user tramite id
+adminRoute.get("/:id", async (req, res, next) => {
     try {
-        //let service = await Service.findById(req.params.id);
-        //let user = await User.findById(req.params.id);
-        let bookings = await Booking.find({
-            user: req.user._id,
-            //service: service.name
-        }).populate({
-            path: "user",
-            select: ["name", "lastName", "email"]
-        })/*.populate({
-            path:"service",
-            select: ["name", "description", "price"]
-        })*/;
-        res.send(bookings);
-        //res.json(user);
+        let user = await User.findById(req.params._id);
+        res.send(user);
     } catch (error) {
         next(error);
     }
@@ -69,13 +68,3 @@ adminRoute.delete("/:id", async(req, res, next) => {
         next(error);
     }
 });
-/*
-//Aggiunta nuovo user
-adminRoute.post("/register", async(req, res, next) => {
-    try {
-        let user = await User.create(req.body);
-        res.send(user).status(400);
-    } catch (error) {
-        next(error);
-    }
-}); */

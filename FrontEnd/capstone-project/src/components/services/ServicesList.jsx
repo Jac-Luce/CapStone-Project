@@ -5,6 +5,7 @@ import './style.css';
 import EditForm from './EditForm.jsx';
 import DeleteButton from './DeleteButton.jsx';
 import NewService from './NewService.jsx';
+import MyNavb from '../navbar/MyNavb.jsx';
 
 export default function ServicesList() {
     const [services, setServices] = useState([]);
@@ -30,6 +31,8 @@ export default function ServicesList() {
     }, [services]);
 
   return (
+    <>
+    <MyNavb />
     <Container fluid='sm'>
     <Row className='justify-content-md-center'>
         <Col md='8'>
@@ -39,7 +42,7 @@ export default function ServicesList() {
                     <ListGroup.Item>
                         <span className='m-2'>{service.name}</span>
                         <span className='m-2'>{service.description}</span>
-                        <span className='m-2'>{service.price}</span>
+                        <span className='m-2'>{service.price}€</span>
                         <EditForm id = {service._id}/>
                         <DeleteButton id = {service._id}/>
                     </ListGroup.Item>
@@ -48,5 +51,6 @@ export default function ServicesList() {
         </Col>    
     </Row>
     </Container>
+    </>
   )
 }
