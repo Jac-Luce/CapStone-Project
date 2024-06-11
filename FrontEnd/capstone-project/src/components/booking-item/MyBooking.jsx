@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../../contextProvider/AuthContextProvider.jsx';
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import DeleteBooking from './DeleteBooking.jsx';
+import EditBooking from './EditBooking.jsx';
 
 export default function MyBooking() {
     //Formatto la data per visualizzarla nel formato desiderato
@@ -50,8 +52,9 @@ export default function MyBooking() {
                             <ListGroup.Item key={index}>
                                 <p>Nome servizio: {booking.service.name}</p>
                                 <p>Descrizione: {booking.service.description}</p>
-                                <p>Costo: {booking.service.price}</p>
+                                <p>Costo: {booking.service.price}€</p>
                                 <p>Giorno: {formatDate(booking.date)}</p>
+                                <p> <DeleteBooking id ={booking._id} getMyBooking={getMyBooking} /> <span> <EditBooking id ={booking._id} getMyBooking={getMyBooking} /> </span> </p>
                             </ListGroup.Item>
                         ))}
                     </ListGroup> ) : (<p>Non ci sono prenotazioni</p>)}

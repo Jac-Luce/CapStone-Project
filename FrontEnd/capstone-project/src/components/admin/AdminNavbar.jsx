@@ -27,14 +27,18 @@ export default function AdminNavbar() {
         <Container className='justify-content-between'>
             <Navbar.Brand as={Link} to="/adminHome">
                 <img className='logoNavbar' alt='logoimage' src={logo} />
+                {' '} <span className='logoName'>Hair Beauty Salon</span>
             </Navbar.Brand>
-            <Nav className='me-auto'>
-                <Nav.Link as={Link} to='/adminHome'>Home</Nav.Link>
-                <Nav.Link as={Link} to='/adminChiSiamo'>Chi siamo</Nav.Link>
-                <Nav.Link as={Link} to='/servicesAdmin'>Servizi</Nav.Link>
-                <Nav.Link as={Link} to='/adminBooking'>Prenotazioni</Nav.Link>
-            </Nav>
-            <Button variant='danger' className='rounded-circle' onClick={handleLogout}> <MdLogout /> </Button>
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Navbar.Collapse id='basic-navbar-nav'>
+                <Nav className='me-auto'>
+                    <Nav.Link as={Link} to='/adminHome'>Home</Nav.Link>
+                    <Nav.Link as={Link} to='/adminChiSiamo' className='ms-4'>Chi siamo</Nav.Link>
+                    <Nav.Link as={Link} to='/servicesAdmin' className='ms-4'>Servizi</Nav.Link>
+                    <Nav.Link as={Link} to='/adminBooking' className='ms-4'>Prenotazioni</Nav.Link>
+                </Nav>
+                <Button variant='danger' className='rounded-circle' onClick={handleLogout}> <MdLogout /> </Button>
+            </Navbar.Collapse>
         </Container>
     </Navbar>
   )

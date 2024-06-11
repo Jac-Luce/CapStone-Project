@@ -9,3 +9,14 @@
     background-color: rgb(255, 255, 255) ;
     padding-bottom: 0px;
 }
+
+.me-auto{
+    margin-left: 150px;
+}
+
+.logoName {
+    background: linear-gradient(156deg, rgba(205,255,216,1) 0%, rgba(148,185,255,1) 50%, rgba(255,148,209,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

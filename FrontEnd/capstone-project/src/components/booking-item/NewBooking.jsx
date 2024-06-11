@@ -65,7 +65,7 @@ export default function NewBooking() {
                 >
                     <option>Scegli il servizio</option>
                     {servicesList.map((service) => (
-                        <option key={service._id} value={service._id}>{service.name} {service.price}</option>
+                        <option key={service._id} value={service._id}>{service.name} {service.price}€</option>
                     ))}
                 </Form.Select>
             </Form.Group>

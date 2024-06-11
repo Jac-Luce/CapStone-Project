@@ -10,10 +10,10 @@ export default function BookHome() {
         navigate('/booking');
     };
   return (
-    <Card>
+    <Card className='ms-5 me-5'>
         <Card.Img src={attrezzatura} alt='Booking image'/>
         <Card.ImgOverlay>
-            <Button onClick={bookNavigate} variant='outline-dark'>Prenota qui il tuo appuntamento</Button>
+            <Button onClick={bookNavigate} variant='outline-secondary' size='sm'>Prenota qui il tuo appuntamento</Button>
         </Card.ImgOverlay>
     </Card>
   )

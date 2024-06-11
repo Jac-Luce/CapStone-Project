@@ -6,3 +6,18 @@
 .fontP {
     font-family: Georgia, 'Times New Roman', Times, serif !important;
 }
+
+.salonName{
+    background: linear-gradient(156deg, rgba(205,255,216,1) 0%, rgba(148,185,255,1) 39%, rgba(255,148,209,1) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.textHome {
+    font-size: 15px;
+}
+
+.textProd {
+    font-size: 14px;
+}

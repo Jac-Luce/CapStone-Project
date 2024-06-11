@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Gwendolyn:wght@400;700&display=swap');
+
+.fontP {
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    font-size: 18px;
+    
+}
+
+.ultimoP {
+    font-family: "Gwendolyn", cursive;
+  font-weight: 700;
+  font-style: normal;
+}

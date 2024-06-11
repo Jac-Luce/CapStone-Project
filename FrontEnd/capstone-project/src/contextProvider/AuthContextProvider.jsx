@@ -3,7 +3,6 @@ import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 
 export const AuthContext = createContext(null);
-//export const AuthContext = createContext();
 
 export default function AuthContextProvider({children}) {
 

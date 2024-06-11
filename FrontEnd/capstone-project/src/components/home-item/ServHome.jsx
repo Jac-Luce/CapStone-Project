@@ -1,8 +1,7 @@
 import React from 'react';
-import shampoo2 from '../../asset/shampoo2.jpg';
+import servizio from '../../asset/servizio.jpg';
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './styleServ.css';
 
 export default function ServHome() {
     const navigate = useNavigate();
@@ -12,10 +11,10 @@ export default function ServHome() {
     };
 
   return (
-    <Card className='me-5 serviziCard'>
-        <Card.Img src={shampoo2} alt='Service image'/>
-        <Card.ImgOverlay>
-            <Button onClick={serviceNavigate} variant='outline-dark'>I nostri servizi</Button>
+    <Card className='me-5 ms-5'>
+        <Card.Img src={servizio} alt='Service image'/>
+        <Card.ImgOverlay className='serviceButton'>
+            <Button onClick={serviceNavigate} variant='outline-secondary' size='sm' >I nostri servizi</Button>
         </Card.ImgOverlay>
     </Card>
   )
