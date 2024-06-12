@@ -7,8 +7,8 @@ export default function Booking() {
   return (
     <>
     <MyNavb />
-    <Container fluid className='mt-5 mx-5 pt-3'>
-        <h3 className='mt-5'>Per effettuare una prenotazione effettua il Login o registrati!</h3>
+    <Container fluid className='my-5 mx-5 pt-5'>
+        <h3 className='mt-5 text-center'>Per effettuare una prenotazione effettua il Login o registrati!</h3>
         <Login />
     </Container>
     </>

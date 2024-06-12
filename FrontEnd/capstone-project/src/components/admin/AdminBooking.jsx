@@ -38,15 +38,16 @@ export default function AdminBooking() {
     <>
     <AdminNavbar/>
     <Container className='adminBooking'>
-        <Row className='justify-content-md-center'>
-            <Col>
+        <h2 className='text-center mb-5'>Prenotazioni ricevute</h2>
+        <Row className='justify-content-md-center fs-6'>
+            <Col md='8'>
                 <ListGroup variant='flush'>
                     {bookingList.map((e) =>
                     <ListGroup.Item>
-                        <p>Prenotazione effettuata da: {e.user.name}  <span>{e.user.lastName}</span></p>
-                        <p>Email: {e.user.email}</p>
-                        <p>Servizio prenotato: {e.service.name}</p>
-                        <p>Il giorno: {formatDate(e.date)}</p>
+                        <p>Prenotazione effettuata da:   <span className='ms-2'>{e.user.name} {e.user.lastName}</span></p>
+                        <p>Email: <span className='ms-2'>{e.user.email}</span></p>
+                        <p>Servizio prenotato: <span className='ms-2'>{e.service.name}</span></p>
+                        <p>Il giorno: <span className='ms-2'>{formatDate(e.date)}</span> </p>
                     </ListGroup.Item>
                     )}
                 </ListGroup>

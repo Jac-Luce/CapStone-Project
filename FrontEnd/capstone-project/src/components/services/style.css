@@ -1,3 +1,21 @@
 .container-sm {
     padding-top: 110px !important;
 }
+
+.verticalText {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 30px;
+}
+
+.listText {
+    font-style: oblique;
+}
+
+.list-group-item {
+    border: none !important;
+}
+
+.divColor {
+    margin-top: 220px;
+}

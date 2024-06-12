@@ -37,7 +37,7 @@ export default function EditForm(props) {
 
   return (
     <>
-      <Button onClick={() => setShow(true)}> <FaRegEdit /> </Button>
+      <Button className='me-2 ms-4 rounded-circle px-1 py-0' onClick={() => setShow(true)}> <FaRegEdit /> </Button>
 
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>

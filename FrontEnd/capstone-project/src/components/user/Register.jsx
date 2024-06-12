@@ -39,9 +39,9 @@ export default function Register() {
         
         <Row className='justify-content-md-center'>
             <Col md='5'>
-                <h5 className='mb-3'>Compila i campi per effettuare la registrazione</h5>
+                <h5 className='mt-4 mb-5'>Compila i campi per effettuare la registrazione</h5>
                 <Form>
-                    <Form.Group>
+                    <Form.Group className='mb-3'>
                         <Form.Label>Nome</Form.Label>
                         <Form.Control 
                         type='text'
@@ -50,7 +50,7 @@ export default function Register() {
                         onChange={(e) => setName(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className='mb-3'>
                         <Form.Label>Cognome</Form.Label>
                         <Form.Control 
                         type='text'
@@ -59,7 +59,7 @@ export default function Register() {
                         onChange={(e) => setLastName(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className='mb-3'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
                         type='text'
@@ -77,9 +77,9 @@ export default function Register() {
                         onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button type='submit' className='mt-4' onClick={newUser}>Registrati</Button>
+                    <Button type='submit' className='mt-4 mb-3' onClick={newUser}>Registrati</Button>
                 </Form>
-                <Link to="/login">Hai già un account? Fai l'accesso.</Link>
+                <Link to="/booking">Hai già un account? Fai l'accesso.</Link>
             </Col>
         </Row>
     </Container>

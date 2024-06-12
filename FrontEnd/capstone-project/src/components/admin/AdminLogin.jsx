@@ -40,12 +40,12 @@ export default function AdminLogin() {
         }
     });
   return (
-    <Container fluid='sm'>
+    <Container fluid='sm' className='mb-5'>
         <Row className='justify-content-md-center'>
             <Col>
                 <h1>Area riservata</h1>
                 <Form onSubmit={adminLogin}>
-                    <Form.Group>
+                    <Form.Group className='my-3'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
                             type='text'
@@ -63,7 +63,7 @@ export default function AdminLogin() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button type='submit'>Accedi</Button>
+                    <Button type='submit' className='my-3'>Accedi</Button>
                 </Form>
                 <Link to='/'>Se non sei un amministratore, torna alla Home</Link>
             </Col>

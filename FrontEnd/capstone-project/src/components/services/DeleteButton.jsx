@@ -25,6 +25,6 @@ export default function DeleteButton(props) {
     };
 
   return (
-    <Button variant='danger' onClick={deleteService}> <MdDeleteForever /> </Button>
+    <Button variant='danger' className='rounded-circle px-1 py-0' onClick={deleteService}> <MdDeleteForever /> </Button>
   )
 }

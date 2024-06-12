@@ -5,7 +5,7 @@ import './style.css';
 import EditForm from './EditForm.jsx';
 import DeleteButton from './DeleteButton.jsx';
 import NewService from './NewService.jsx';
-import MyNavb from '../navbar/MyNavb.jsx';
+import AdminNavbar from '../admin/AdminNavbar.jsx';
 
 export default function ServicesList() {
     const [services, setServices] = useState([]);
@@ -32,12 +32,16 @@ export default function ServicesList() {
 
   return (
     <>
-    <MyNavb />
-    <Container fluid='sm'>
+    <AdminNavbar />
+    <Container fluid='sm' className='mt-4'>
+    <h2 className='text-center mb-5'>Modifica e aggiungi i tuoi servizi</h2>
     <Row className='justify-content-md-center'>
         <Col md='8'>
-            <NewService serviceList={servicesList}/>
-            <ListGroup variant='flush'>
+            <div className='text-center mb-5'>
+                <NewService serviceList={servicesList}/>
+            </div>
+            
+            <ListGroup variant='flush' className='fs-5'>
                 {services.map((service) => (
                     <ListGroup.Item>
                         <span className='m-2'>{service.name}</span>

@@ -37,7 +37,7 @@ export default function AdminNavbar() {
                     <Nav.Link as={Link} to='/servicesAdmin' className='ms-4'>Servizi</Nav.Link>
                     <Nav.Link as={Link} to='/adminBooking' className='ms-4'>Prenotazioni</Nav.Link>
                 </Nav>
-                <Button variant='danger' className='rounded-circle' onClick={handleLogout}> <MdLogout /> </Button>
+                <Button variant='danger' className='rounded-circle px-1 py-0' onClick={handleLogout}> <MdLogout /> </Button>
             </Navbar.Collapse>
         </Container>
     </Navbar>

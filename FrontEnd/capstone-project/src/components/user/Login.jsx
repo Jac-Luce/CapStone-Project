@@ -44,12 +44,11 @@ export default function Login() {
 
   return (
     <>
-    <MyNavb />
     <Container fluid='sm'>
         <Row className='justify-content-md-center'>
             <Col>
                 <Form onSubmit={userLogin}>
-                    <Form.Group>
+                    <Form.Group className='mb-3'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
                             type='text'
@@ -58,7 +57,7 @@ export default function Login() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className='mb-3'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
                             type='password'
@@ -67,7 +66,7 @@ export default function Login() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button type='submit'>Accedi</Button>
+                    <Button className='mb-3' type='submit'>Accedi</Button>    
                 </Form>
                 <Link to='/signIn'>Non sei ancora registrato? Registrati</Link>
             </Col>

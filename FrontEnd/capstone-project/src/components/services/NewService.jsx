@@ -36,7 +36,7 @@ export default function NewService({servicesList}) {
 
   return (
     <>
-        <Button onClick={() => setShow(true)}>Aggiungi nuovo servizio</Button>
+        <Button className='rounded-pill' onClick={() => setShow(true)}>Aggiungi nuovo servizio</Button>
 
         <Modal show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>

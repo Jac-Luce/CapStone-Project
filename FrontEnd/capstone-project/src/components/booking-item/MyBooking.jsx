@@ -50,7 +50,7 @@ export default function MyBooking() {
                     <ListGroup variant='flush'>
                         {myBookingList.map((booking, index) => (
                             <ListGroup.Item key={index}>
-                                <p>Nome servizio: {booking.service.name}</p>
+                                <p>Servizio scelto: {booking.service.name}</p>
                                 <p>Descrizione: {booking.service.description}</p>
                                 <p>Costo: {booking.service.price}€</p>
                                 <p>Giorno: {formatDate(booking.date)}</p>
