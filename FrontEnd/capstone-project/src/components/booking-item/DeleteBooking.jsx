@@ -24,6 +24,6 @@ export default function DeleteBooking(props) {
     };
 
   return (
-    <Button variant='danger' onClick={deleteMyBooking}> <MdDeleteForever /> </Button>
+    <Button variant='danger' className='rounded-circle px-1 py-0' onClick={deleteMyBooking}> <MdDeleteForever /> </Button>
   )
 }

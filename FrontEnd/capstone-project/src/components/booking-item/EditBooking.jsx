@@ -60,7 +60,7 @@ export default function EditBooking(props) {
     };
   return (
     <>
-    <Button onClick={() => setShow(true)}> <FaRegEdit /> </Button>
+    <Button onClick={() => setShow(true)} className='rounded-circle ms-4 px-1 py-0'> <FaRegEdit /> </Button>
 
     <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>

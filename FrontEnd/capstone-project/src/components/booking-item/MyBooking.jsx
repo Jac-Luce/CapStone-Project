@@ -51,10 +51,11 @@ export default function MyBooking() {
                         {myBookingList.map((booking, index) => (
                             <ListGroup.Item key={index}>
                                 <p>Servizio scelto: {booking.service.name}</p>
-                                <p>Descrizione: {booking.service.description}</p>
                                 <p>Costo: {booking.service.price}€</p>
                                 <p>Giorno: {formatDate(booking.date)}</p>
-                                <p> <DeleteBooking id ={booking._id} getMyBooking={getMyBooking} /> <span> <EditBooking id ={booking._id} getMyBooking={getMyBooking} /> </span> </p>
+                                <p>Ora: {booking.time}</p>
+                                <p> <EditBooking id ={booking._id} getMyBooking={getMyBooking} /> <span> <DeleteBooking id ={booking._id} getMyBooking={getMyBooking} /> </span> </p>
+                                <hr />
                             </ListGroup.Item>
                         ))}
                     </ListGroup> ) : (<p>Non ci sono prenotazioni</p>)}

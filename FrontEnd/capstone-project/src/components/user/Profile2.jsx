@@ -80,10 +80,10 @@ export default function Profile2() {
                     </div>
                 </Tab>
                 <Tab eventKey="bookingList" title="Le tue prenotazioni">
-                    <MyBooking />
-                    <div>
-                        <Link to='/booking'>Effettua una prenotazione</Link>
+                    <div className='d-flex justify-content-end'>
+                        <Link to='/booking' className='ms-4' style={{color: 'blueviolet'}}>Effettua una nuova prenotazione</Link>
                     </div>
+                    <MyBooking />
                 </Tab>
             </Tabs>
             </Col>

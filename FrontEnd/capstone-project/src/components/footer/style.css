@@ -1,0 +1,11 @@
+.logoNameFooter {
+    background: linear-gradient(156deg, rgba(205,255,216,1) 0%, rgba(148,185,255,1) 50%, rgba(255,148,209,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 20px;
+}
+
+.logoFooter {
+    width: 100px;
+}

@@ -23,6 +23,7 @@ export default function AdminBooking() {
             });
             if(response.ok) {
                 const result = await response.json();
+                console.log(result);
                 setBookingList(result);
             }
 
@@ -48,6 +49,8 @@ export default function AdminBooking() {
                         <p>Email: <span className='ms-2'>{e.user.email}</span></p>
                         <p>Servizio prenotato: <span className='ms-2'>{e.service.name}</span></p>
                         <p>Il giorno: <span className='ms-2'>{formatDate(e.date)}</span> </p>
+                        <p>Ora: <span className='ms-2'>{e.time}</span></p>
+                        <hr />
                     </ListGroup.Item>
                     )}
                 </ListGroup>
