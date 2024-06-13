@@ -15,6 +15,7 @@ import Service from './pages/services/Service.jsx';
 import AdminBooking from './components/admin/AdminBooking.jsx';
 import WhoWeAre from './pages/who-we-are/WhoWeAre.jsx';
 import AdminWhoWeAre from './pages/who-we-are/AdminWhoWeAre.jsx';
+import Profile2 from './components/user/Profile2.jsx';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
       <Route element={<ProtectRoute />} > 
         <Route path='/profile' element={<Profile />} />
+        <Route path='/profile2' element={<Profile2 />} />
       </Route>
 
       <Route path='/adminLogin' element={<AdminLogin />} />

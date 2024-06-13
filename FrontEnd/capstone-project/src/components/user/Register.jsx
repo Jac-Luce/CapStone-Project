@@ -25,7 +25,7 @@ export default function Register() {
             });
 
             if (response.ok) {
-               navigate('/login');
+               navigate('/booking');
             }
         } catch (error) {
             console.error(error);

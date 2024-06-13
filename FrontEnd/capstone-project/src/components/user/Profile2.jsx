@@ -5,6 +5,10 @@ import Logout from './Logout.jsx';
 import MyBooking from '../booking-item/MyBooking.jsx';
 import MyNavb from '../navbar/MyNavb.jsx';
 import { AuthContext } from '../../contextProvider/AuthContextProvider.jsx';
+import DeleteProfile from './DeleteProfile.jsx';
+import EditProfile from './EditProfile.jsx';
+import { Link } from 'react-router-dom';
+import EditPassword from './EditPassword.jsx';
 
 export default function Profile2() {
     const [selected, setSelected] = useState("mydata");
@@ -40,8 +44,8 @@ export default function Profile2() {
             <Col md='3' xs='6'>
                 <Card className='mt-5 border-white'>
                     <Card.Body>
-                        <Card.Title>Ciao {data.name}</Card.Title>
-                        <Card.Text>{data.email}</Card.Text>
+                        <Card.Title>Ciao {data.name},</Card.Title>
+                        <Card.Text>In questa sezione potrai visualizzare i tuoi dati e modificarli</Card.Text>
                     </Card.Body>
                 </Card>
                 <Logout />
@@ -59,11 +63,27 @@ export default function Profile2() {
                         <ListGroup.Item>Nome: {data.name}</ListGroup.Item>
                         <ListGroup.Item>Cognome: {data.lastName}</ListGroup.Item>
                         <ListGroup.Item>Email: {data.email}</ListGroup.Item>
-                        <ListGroup.Item>Password: {data.password}</ListGroup.Item>
                     </ListGroup>
+                    <div>
+                        <div className='d-flex justify-content-between'>
+                            <div>
+                                <EditProfile secondProfile={secondProfile}/>
+                            </div>
+                            <div>
+                                <EditPassword secondProfile={secondProfile}/>
+                            </div>
+                            
+                        </div>
+                        <div className='d-flex justify-content-center'>
+                            <DeleteProfile id={data._id}/>
+                        </div>
+                    </div>
                 </Tab>
                 <Tab eventKey="bookingList" title="Le tue prenotazioni">
                     <MyBooking />
+                    <div>
+                        <Link to='/booking'>Effettua una prenotazione</Link>
+                    </div>
                 </Tab>
             </Tabs>
             </Col>

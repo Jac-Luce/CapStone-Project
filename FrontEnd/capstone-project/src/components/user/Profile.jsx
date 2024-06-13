@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col, Card, Tab, Tabs } from 'react-bootstrap';
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext }from '../../contextProvider/AuthContextProvider.jsx';
-import Logout from './Logout.jsx';
 import MyBooking from '../booking-item/MyBooking.jsx';
 import NewBooking from '../booking-item/NewBooking.jsx';
 import MyNavb from '../navbar/MyNavb.jsx';
@@ -43,12 +42,10 @@ export default function Profile() {
             <Col md='3' xs='6'>
                 <Card className='mt-5 border-white'>
                     <Card.Body>
-                        <Card.Title>Ciao {data.name}</Card.Title>
-                        <Card.Text>{data.email}</Card.Text>
+                        <Card.Title>Ciao {data.name},</Card.Title>
+                        <Card.Text>Qui puoi effettuare una prenotazione</Card.Text>
                     </Card.Body>
                 </Card>
-                <Logout />
-                
             </Col>
             <Col md='9' xs='12'>
             <Tabs

@@ -39,6 +39,25 @@ adminRoute.get("/myBooking", authMiddleware, async (req, res, next) => {
     }
 });
 
+//Modifica user con autenticazione
+adminRoute.put("/edit", authMiddleware, async(req, res, next) => {
+    try {
+        let user = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
+        res.send(user);
+    } catch (error) {
+        next(error);
+    }
+});
+
+adminRoute.delete("/delete", authMiddleware, async(req, res, next) => {
+    try {
+        await User.deleteOne({ _id: req.user._id });
+        res.sendStatus(204);
+    } catch (error) {
+        next(error);
+    }
+});
+
 //Ricevo specifico user tramite id
 adminRoute.get("/:id", async (req, res, next) => {
     try {
@@ -50,14 +69,14 @@ adminRoute.get("/:id", async (req, res, next) => {
 });
 
 //Modifica user
-adminRoute.put("/:id", async(req, res, next) => {
+/*adminRoute.put("/:id", async(req, res, next) => {
     try {
         let user = await User.findByIdAndUpdate(req.params._id, req.body, { new: true });
         res.send(user);
     } catch (error) {
         next(error);
     }
-});
+});*/
 
 //Elimina user
 adminRoute.delete("/:id", async(req, res, next) => {

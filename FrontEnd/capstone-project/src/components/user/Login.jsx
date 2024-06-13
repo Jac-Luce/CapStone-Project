@@ -44,6 +44,7 @@ export default function Login() {
 
   return (
     <>
+    <MyNavb />
     <Container fluid='sm'>
         <Row className='justify-content-md-center'>
             <Col>

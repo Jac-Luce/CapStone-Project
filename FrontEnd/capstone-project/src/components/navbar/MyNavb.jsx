@@ -23,7 +23,7 @@ export default function MyNavb() {
             <Nav.Link as={Link} to='/booking' className='ms-4'>Prenota qui</Nav.Link>
           </Nav>
           <Button variant='outline-primary' className='rounded-circle' as={Link} to='/adminLogin'> <GiPadlock /> </Button>
-          <Button variant='outline-primary' className='ms-1 rounded-circle' as={Link} to='/profile'> <FaRegUserCircle /> </Button>
+          <Button variant='outline-primary' className='ms-1 rounded-circle' as={Link} to='/profile2'> <FaRegUserCircle /> </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
